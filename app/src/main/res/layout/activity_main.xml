@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.robog.qqnaviview.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <com.robog.library.QQNaviView
+            android:id="@+id/qq_view_bubble"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            app:bigIcon="@drawable/pre_bubble_big"
+            app:smallIcon="@drawable/pre_bubble_small"
+            app:range="1.5">
+
+        </com.robog.library.QQNaviView>
+
+        <com.robog.library.QQNaviView
+            android:id="@+id/qq_view_person"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            app:bigIcon="@drawable/pre_person_big"
+            app:smallIcon="@drawable/pre_person_small"/>
+
+        <com.robog.library.QQNaviView
+            android:id="@+id/qq_view_star"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            app:bigIcon="@drawable/pre_star_big"
+            app:smallIcon="@drawable/pre_star_small"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
