@@ -127,8 +127,8 @@ public class QQNaviView extends LinearLayout {
     private void setupView() {
 
         //根据view的宽高确定可拖动半径的大小
-        mSmallRadius = 0.1f * Math.min(mView.getWidth(), mView.getHeight());
-        mBigRadius = 1.5f * mSmallRadius * mRange;
+        mSmallRadius = 0.1f * Math.min(mView.getWidth(), mView.getHeight()) * mRange;
+        mBigRadius = 1.5f * mSmallRadius;
 
         //设置imageview的padding，不然拖动时图片边缘部分会消失
         int padding = (int) mBigRadius;
