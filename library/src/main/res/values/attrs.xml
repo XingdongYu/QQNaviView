@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="FaceView">
-        <attr name="bigIcon" format="reference"/>
-        <attr name="smallIcon" format="reference"/>
+        <attr name="bigIconSrc" format="reference"/>
+        <attr name="smallIconSrc" format="reference"/>
+        <attr name="iconWidth" format="dimension"/>
+        <attr name="iconHeight" format="dimension"/>
         <attr name="range" format="float"/>
     </declare-styleable>
 </resources>

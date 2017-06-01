@@ -9,9 +9,9 @@ import com.robog.library.QQNaviView;
 
 public class MainActivity extends AppCompatActivity {
 
-    QQNaviView mBubbleView;
-    QQNaviView mPersonView;
-    QQNaviView mStarView;
+    private QQNaviView mBubbleView;
+    private QQNaviView mPersonView;
+    private QQNaviView mStarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

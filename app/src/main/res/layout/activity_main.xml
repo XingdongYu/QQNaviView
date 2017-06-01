@@ -10,37 +10,70 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:paddingBottom="4dp"
+        android:elevation="4dp">
 
         <com.robog.library.QQNaviView
             android:id="@+id/qq_view_bubble"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClick"
-            app:bigIcon="@drawable/pre_bubble_big"
-            app:smallIcon="@drawable/pre_bubble_small"
-            app:range="1.5">
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:bigIconSrc="@drawable/pre_bubble_big"
+            app:smallIconSrc="@drawable/pre_bubble_small"
+            app:iconWidth="50dp"
+            app:iconHeight="50dp"
+            app:range="1.2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="消息"/>
 
         </com.robog.library.QQNaviView>
 
         <com.robog.library.QQNaviView
             android:id="@+id/qq_view_person"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClick"
-            app:bigIcon="@drawable/pre_person_big"
-            app:smallIcon="@drawable/pre_person_small"/>
+            app:bigIconSrc="@drawable/pre_person_big"
+            app:smallIconSrc="@drawable/pre_person_small"
+            app:iconWidth="50dp"
+            app:iconHeight="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="联系人" />
+
+        </com.robog.library.QQNaviView>
 
         <com.robog.library.QQNaviView
             android:id="@+id/qq_view_star"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClick"
-            app:bigIcon="@drawable/pre_star_big"
-            app:smallIcon="@drawable/pre_star_small"/>
+            app:bigIconSrc="@drawable/pre_star_big"
+            app:smallIconSrc="@drawable/pre_star_small"
+            app:iconWidth="50dp"
+            app:iconHeight="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="动态"/>
+
+        </com.robog.library.QQNaviView>
 
     </LinearLayout>
 
