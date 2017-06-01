@@ -73,12 +73,12 @@ public class QQNaviView extends LinearLayout {
 
         mContext = context;
 
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.FaceView, defStyleAttr, 0);
-        mBigIconSrc = ta.getResourceId(R.styleable.FaceView_bigIconSrc, R.drawable.big);
-        mSmallIconSrc = ta.getResourceId(R.styleable.FaceView_smallIconSrc, R.drawable.small);
-        mIconWidth = ta.getDimension(R.styleable.FaceView_iconWidth, dp2px(context, 60));
-        mIconHeight = ta.getDimension(R.styleable.FaceView_iconHeight, dp2px(context, 60));
-        mRange = ta.getFloat(R.styleable.FaceView_range, 1);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.QQNaviView, defStyleAttr, 0);
+        mBigIconSrc = ta.getResourceId(R.styleable.QQNaviView_bigIconSrc, R.drawable.big);
+        mSmallIconSrc = ta.getResourceId(R.styleable.QQNaviView_smallIconSrc, R.drawable.small);
+        mIconWidth = ta.getDimension(R.styleable.QQNaviView_iconWidth, dp2px(context, 60));
+        mIconHeight = ta.getDimension(R.styleable.QQNaviView_iconHeight, dp2px(context, 60));
+        mRange = ta.getFloat(R.styleable.QQNaviView_range, 1);
         ta.recycle();
 
         //默认垂直排列
