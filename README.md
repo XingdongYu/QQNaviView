@@ -9,7 +9,7 @@
 
 Gradle
 ---
-
+[![](https://jitpack.io/v/XingdongYu/QQNaviView.svg)](https://jitpack.io/#XingdongYu/QQNaviView)
 /build.gradle
 ```
 allprojects {
@@ -108,7 +108,7 @@ dependencies {
 
 </RelativeLayout>
 ```
-属性
+支持属性
 ---
 | name         | format    | description |
 | -------------|-----------| ------------|
