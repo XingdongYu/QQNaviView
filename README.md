@@ -9,24 +9,26 @@
 
 Gradle
 ---
-```
+
 /build.gradle
-    allprojects {
-	    repositories {
-		    ...
-		    maven { url 'https://jitpack.io' }
-	    }
+```
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
 	}
+}
 ```
-```
+
 /app/build.gradle
-    dependencies {
-       compile 'com.github.XingdongYu:QQNaviView:v1.0.0'
-	}
+```
+dependencies {
+	compile 'com.github.XingdongYu:QQNaviView:v1.0.0'
+}
 ```
 布局文件
 ---
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
