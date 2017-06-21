@@ -2,7 +2,7 @@
 模仿手机QQ底部导航栏Icon拖拽效果
 
 介绍：http://blog.csdn.net/kobeyxd123/article/details/72829288
-效果图：
+	效果图：
 ---
 ![image](http://img.blog.csdn.net/20170601105942711?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQva29iZXl4ZDEyMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
@@ -15,12 +15,12 @@
 		    maven { url 'https://jitpack.io' }
 	    }
 	}
-#app:build.gradle
+	#app:build.gradle
     dependencies {
        compile 'com.github.XingdongYu:QQNaviView:v1.0.0'
 	}
 #布局文件
-```java
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
