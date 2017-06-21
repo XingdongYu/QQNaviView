@@ -10,6 +10,7 @@
 Gradle
 ---
 [![](https://jitpack.io/v/XingdongYu/QQNaviView.svg)](https://jitpack.io/#XingdongYu/QQNaviView)
+
 /build.gradle
 ```
 allprojects {
