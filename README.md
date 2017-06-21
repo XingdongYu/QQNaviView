@@ -30,84 +30,24 @@ dependencies {
 使用
 ---
 ```xml
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<com.robog.library.QQNaviView
+	android:id="@+id/qq_view_bubble"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:gravity="center"
+	app:bigIconSrc="@drawable/pre_bubble_big"
+	app:smallIconSrc="@drawable/pre_bubble_small"
+	app:iconWidth="50dp"
+	app:iconHeight="50dp"
+	app:range="1.2">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:background="#ffffff"
-        android:paddingBottom="4dp"
-        android:elevation="4dp">
-
-        <com.robog.library.QQNaviView
-            android:id="@+id/qq_view_bubble"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClick"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:bigIconSrc="@drawable/pre_bubble_big"
-            app:smallIconSrc="@drawable/pre_bubble_small"
-            app:iconWidth="50dp"
-            app:iconHeight="50dp"
-            app:range="1.2">
-
-            <TextView
-                android:layout_width="wrap_content"
+ 	<TextView
+		android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:text="消息"/>
+                android:text="消息"/>           
 
-        </com.robog.library.QQNaviView>
-
-        <com.robog.library.QQNaviView
-            android:id="@+id/qq_view_person"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClick"
-            app:bigIconSrc="@drawable/pre_person_big"
-            app:smallIconSrc="@drawable/pre_person_small"
-            app:iconWidth="50dp"
-            app:iconHeight="50dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="联系人" />
-
-        </com.robog.library.QQNaviView>
-
-        <com.robog.library.QQNaviView
-            android:id="@+id/qq_view_star"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClick"
-            app:bigIconSrc="@drawable/pre_star_big"
-            app:smallIconSrc="@drawable/pre_star_small"
-            app:iconWidth="50dp"
-            app:iconHeight="50dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="动态"/>
-
-        </com.robog.library.QQNaviView>
-
-    </LinearLayout>
-
-</RelativeLayout>
+</com.robog.library.QQNaviView>
 ```
 支持属性
 ---
