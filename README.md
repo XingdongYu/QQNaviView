@@ -26,7 +26,7 @@ dependencies {
 	compile 'com.github.XingdongYu:QQNaviView:v1.0.0'
 }
 ```
-布局文件
+使用
 ---
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -108,4 +108,13 @@ dependencies {
 
 </RelativeLayout>
 ```
+属性
+---
+| name         | format    | description |
+| -------------|:---------:| -----------:|
+| bigIconSrc   | reference |  大图标资源  |
+| smallIconSrc | reference |  小图标资源  |
+| iconWidth    | dimension |  图标宽度    |
+| iconHeight   | dimension |  图标高度    |
+| range        | float     |  可拖动范围  |
   
