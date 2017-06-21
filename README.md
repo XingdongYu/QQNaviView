@@ -111,7 +111,7 @@ dependencies {
 属性
 ---
 | name         | format    | description |
-| -------------|:---------:| -----------:|
+| -------------|-----------| ------------|
 | bigIconSrc   | reference |  大图标资源  |
 | smallIconSrc | reference |  小图标资源  |
 | iconWidth    | dimension |  图标宽度    |
