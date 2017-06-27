@@ -22,7 +22,6 @@
             android:layout_weight="1"
             android:onClick="onClick"
             android:gravity="center"
-            android:orientation="horizontal"
             app:bigIconSrc="@drawable/pre_bubble_big"
             app:smallIconSrc="@drawable/pre_bubble_small"
             app:iconWidth="50dp"

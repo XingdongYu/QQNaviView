@@ -125,11 +125,9 @@ public class QQNaviView extends LinearLayout {
      * 确定view以及拖动相关参数
      */
     private void setupView() {
-
         //根据view的宽高确定可拖动半径的大小
-        mSmallRadius = 0.1f * Math.min(mView.getWidth(), mView.getHeight()) * mRange;
+        mSmallRadius = 0.1f * Math.min(mView.getMeasuredWidth(), mView.getMeasuredHeight()) * mRange;
         mBigRadius = 1.5f * mSmallRadius;
-
         //设置imageview的padding，不然拖动时图片边缘部分会消失
         int padding = (int) mBigRadius;
         mBigIcon.setPadding(padding, padding, padding, padding);
@@ -154,6 +152,8 @@ public class QQNaviView extends LinearLayout {
                 height += childHeight;
             }
         }
+        width += (getPaddingLeft() + getPaddingRight());
+        height += (getPaddingTop() + getPaddingBottom());
         setMeasuredDimension((modeWidth == MeasureSpec.EXACTLY) ? sizeWidth : width,
                 (modeHeight == MeasureSpec.EXACTLY) ? sizeHeight : height);
     }
