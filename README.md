@@ -24,7 +24,7 @@ allprojects {
 /app/build.gradle
 ```
 dependencies {
-	compile 'com.github.XingdongYu:QQNaviView:v1.0.0'
+	compile 'com.github.XingdongYu:QQNaviView:v1.0.1'
 }
 ```
 使用
