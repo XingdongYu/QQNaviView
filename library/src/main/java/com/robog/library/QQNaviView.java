@@ -117,8 +117,14 @@ public class QQNaviView extends LinearLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
         setupView();
-        measureDimension(widthMeasureSpec, heightMeasureSpec);
+
+        final int w = resolveSize(getMeasuredWidth(), widthMeasureSpec);
+        final int h = resolveSize(getMeasuredHeight(), heightMeasureSpec);
+
+        setMeasuredDimension(w, h);
     }
 
     /**
@@ -132,30 +138,6 @@ public class QQNaviView extends LinearLayout {
         int padding = (int) mBigRadius;
         mBigIcon.setPadding(padding, padding, padding, padding);
         mSmallIcon.setPadding(padding, padding, padding, padding);
-    }
-
-    private void measureDimension(int widthMeasureSpec, int heightMeasureSpec) {
-        final int sizeWidth = MeasureSpec.getSize(widthMeasureSpec);
-        final int sizeHeight = MeasureSpec.getSize(heightMeasureSpec);
-        final int modeWidth = MeasureSpec.getMode(widthMeasureSpec);
-        final int modeHeight = MeasureSpec.getMode(heightMeasureSpec);
-        int width = 0;
-        int height = 0;
-        for (int i = 0; i < getChildCount(); i++){
-            final View child = getChildAt(i);
-            if (child.getVisibility() != GONE){
-                measureChild(child, widthMeasureSpec, heightMeasureSpec);
-                LayoutParams lp = (LayoutParams) child.getLayoutParams();
-                final int childWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
-                final int childHeight = child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;
-                width += childWidth;
-                height += childHeight;
-            }
-        }
-        width += (getPaddingLeft() + getPaddingRight());
-        height += (getPaddingTop() + getPaddingBottom());
-        setMeasuredDimension((modeWidth == MeasureSpec.EXACTLY) ? sizeWidth : width,
-                (modeHeight == MeasureSpec.EXACTLY) ? sizeHeight : height);
     }
 
     @Override
