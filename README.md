@@ -9,22 +9,11 @@
 
 Gradle
 ---
-[![](https://jitpack.io/v/XingdongYu/QQNaviView.svg)](https://jitpack.io/#XingdongYu/QQNaviView)
+[ ![Download](https://api.bintray.com/packages/robog/Maven/QQNaviView/images/download.svg) ](https://bintray.com/robog/Maven/QQNaviView/1.0.2)
 
-/build.gradle
-```
-allprojects {
-	repositories {
-		...
-		maven { url 'https://jitpack.io' }
-	}
-}
-```
-
-/app/build.gradle
 ```
 dependencies {
-	implementation 'com.github.XingdongYu:QQNaviView:v1.0.2'
+	implementation 'com.robog:QQNaviView:1.0.2'
 }
 ```
 使用

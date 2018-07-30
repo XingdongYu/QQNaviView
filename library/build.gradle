@@ -1,9 +1,21 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.novoda.bintray-release'
+
+def siteUrl = 'https://github.com/XingdongYu/QQNaviView'
+publish {
+    userOrg = 'robog'
+    repoName = 'Maven'
+    groupId = 'com.robog'
+    artifactId = 'QQNaviView'
+    publishVersion = '1.0.2'
+    desc = '模仿手机QQ底部导航栏Icon拖拽效果'
+    website = siteUrl
+}
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         minSdkVersion 19
@@ -27,6 +39,7 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    testImplementation 'junit:junit:4.12'
     implementation 'com.android.support:appcompat-v7:26.1.0'
     androidTestImplementation 'junit:junit:4.12'
 }
