@@ -8,7 +8,7 @@ publish {
     repoName = 'Maven'
     groupId = 'com.robog'
     artifactId = 'QQNaviView'
-    publishVersion = '1.0.2'
+    publishVersion = '1.0.3'
     desc = '模仿手机QQ底部导航栏Icon拖拽效果'
     website = siteUrl
 }

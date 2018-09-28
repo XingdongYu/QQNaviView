@@ -2,11 +2,11 @@ package com.robog.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Handler;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -56,9 +56,30 @@ public class QQNaviView extends LinearLayout {
     /* 拖动范围 可调 */
     private float mRange;
 
-    private float lastX;
+    private float mLastX;
+    private float mLastY;
 
-    private float lastY;
+    /* 水平方向拖动距离 */
+    private float mHorizontalX;
+
+    /* 当前朝向 */
+    private int mDirection = -1;
+
+    /* 当前选中状态 */
+    private int mCheckStatus;
+
+    /* 朝向 */
+    private static int LEFT = 0;
+    private static int RIGHT = 1;
+
+    /* 选中状态 */
+    private static int CHECKED = 0;
+    private static int UNCHECKED = 1;
+
+    /* 每次移动距离 */
+    private static int INTERVAL = 2;
+    /* 转动时间间隔 */
+    private static int DELAY = 10;
 
     public QQNaviView(@NonNull Context context) {
         this(context, null);
@@ -131,10 +152,10 @@ public class QQNaviView extends LinearLayout {
      * 确定view以及拖动相关参数
      */
     private void setupView() {
-        //根据view的宽高确定可拖动半径的大小
+        // 根据view的宽高确定可拖动半径的大小
         mSmallRadius = 0.1f * Math.min(mView.getMeasuredWidth(), mView.getMeasuredHeight()) * mRange;
         mBigRadius = 1.5f * mSmallRadius;
-        //设置imageview的padding，不然拖动时图片边缘部分会消失
+        // 设置imageview的padding，不然拖动时图片边缘部分会消失
         int padding = (int) mBigRadius;
         mBigIcon.setPadding(padding, padding, padding, padding);
         mSmallIcon.setPadding(padding, padding, padding, padding);
@@ -150,12 +171,12 @@ public class QQNaviView extends LinearLayout {
             if (child.getVisibility() != GONE){
                 final int childWidth = child.getMeasuredWidth();
                 final int childHeight = child.getMeasuredHeight();
-                //水平居中显示
+                // 水平居中显示
                 childLeft = (getWidth() - childWidth) / 2;
-                //当前子view的top
+                // 当前子view的top
                 childTop += lp.topMargin;
                 child.layout(childLeft, childTop, childLeft + childWidth, childTop + childHeight);
-                //下一个view的top是当前子view的top + height + bottomMargin
+                // 下一个view的top是当前子view的top + height + bottomMargin
                 childTop += childHeight + lp.bottomMargin;
             }
         }
@@ -167,26 +188,85 @@ public class QQNaviView extends LinearLayout {
         float y = event.getY();
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-                lastX = x;
-                lastY = y;
+                mLastX = x;
+                mLastY = y;
                 break;
             case MotionEvent.ACTION_MOVE:
-                float deltaX = x - lastX;
-                float deltaY = y - lastY;
-
+                float deltaX = x - mLastX;
+                float deltaY = y - mLastY;
                 moveEvent(mBigIcon, deltaX, deltaY, mSmallRadius);
-                //因为可拖动大半径是小半径的1.5倍， 因此这里x,y也相应乘1.5
+                // 因为可拖动大半径是小半径的1.5倍， 因此这里x,y也相应乘1.5
                 moveEvent(mSmallIcon, 1.5f * deltaX, 1.5f * deltaY, mBigRadius);
                 break;
             case MotionEvent.ACTION_UP:
-                //抬起时复位
-                mBigIcon.setX(0);
+                // 抬起时复位
                 mBigIcon.setY(0);
-                mSmallIcon.setX(0);
                 mSmallIcon.setY(0);
+                mBigIcon.setX(0);
+                if (mCheckStatus == UNCHECKED) {
+                    if (mDirection == LEFT)
+                        mSmallIcon.setX(mSmallIcon.getLeft() - (mBigRadius - mSmallRadius));
+                    if (mDirection == RIGHT)
+                        mSmallIcon.setX(mSmallIcon.getLeft() + (mBigRadius - mSmallRadius));
+                } else {
+                    mSmallIcon.setX(0);
+                }
                 break;
         }
         return super.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean performClick() {
+        mCheckStatus = CHECKED;
+        // 考虑点击状态是 unchecked -> checked的情况，此时会开始转向动画，
+        // 但我们希望的是icon都是正常状态，因此这里removeCallback，并将smallIcon重置为0
+        mHandler.removeCallbacks(mRunnable);
+        mSmallIcon.setX(0);
+        // 重置方向
+        mDirection = -1;
+        return super.performClick();
+    }
+
+    private final Handler mHandler = new Handler();
+    private final Runnable mRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (mDirection == RIGHT) {
+                if (mHorizontalX >= mBigRadius - mSmallRadius) return;
+                mHorizontalX += INTERVAL;
+            } else {
+                if (mHorizontalX <= mSmallRadius - mBigRadius) return;
+                mHorizontalX -= INTERVAL;
+            }
+            // 此时只有小图标在移动，radius为mBigRadius - mSmallRadius
+            moveEvent(mSmallIcon, mHorizontalX, 0, mBigRadius - mSmallRadius);
+            mHandler.postDelayed(this, DELAY);
+        }
+    };
+
+    public void check() {
+        mCheckStatus = CHECKED;
+    }
+
+    public void lookLeft() {
+
+        if (mDirection == LEFT) return;
+
+        mHorizontalX = 0;
+        mDirection = LEFT;
+        mCheckStatus = UNCHECKED;
+        mHandler.post(mRunnable);
+    }
+
+    public void lookRight() {
+
+        if (mDirection == RIGHT) return;
+
+        mHorizontalX = 0;
+        mDirection = RIGHT;
+        mCheckStatus = UNCHECKED;
+        mHandler.post(mRunnable);
     }
 
     /**
@@ -198,13 +278,12 @@ public class QQNaviView extends LinearLayout {
      */
     private void moveEvent(View view, float deltaX, float deltaY, float radius){
 
-        //先计算拖动距离
+        // 先计算拖动距离
         float distance = getDistance(deltaX, deltaY);
-
-        //拖动的方位角，atan2出来的角度是带正负号的
+        // 拖动的方位角，atan2出来的角度是带正负号的
         double degree = Math.atan2(deltaY, deltaX);
 
-        //如果大于临界半径就不能再往外拖了
+        // 如果大于临界半径就不能再往外拖了
         if (distance > radius){
             view.setX(view.getLeft() + (float) (radius * Math.cos(degree)));
             view.setY(view.getTop() + (float) (radius * Math.sin(degree)));
@@ -212,7 +291,12 @@ public class QQNaviView extends LinearLayout {
             view.setX(view.getLeft() + deltaX);
             view.setY(view.getTop() + deltaY);
         }
+    }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        mHandler.removeCallbacks(mRunnable);
     }
 
     private int dp2px(Context context, float dpVal) {

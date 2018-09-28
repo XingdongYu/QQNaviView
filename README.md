@@ -9,7 +9,7 @@
 
 Gradle
 ---
-[ ![Download](https://api.bintray.com/packages/robog/Maven/QQNaviView/images/download.svg) ](https://bintray.com/robog/Maven/QQNaviView/1.0.2)
+[ ![Download](https://api.bintray.com/packages/robog/Maven/QQNaviView/images/download.svg) ](https://bintray.com/robog/Maven/QQNaviView/1.0.3)
 
 ```
 dependencies {
