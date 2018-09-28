@@ -13,7 +13,7 @@ Gradle
 
 ```
 dependencies {
-	implementation 'com.robog:QQNaviView:1.0.2'
+	implementation 'com.robog:QQNaviView:1.0.3'
 }
 ```
 使用
